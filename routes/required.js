@@ -3,10 +3,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/list', (req, res, next) => {
-
+    res.send({ records: [] });
 })
 
 router.post('/create', (req, res, next) => {
+    res.status(403).send();
 });
 
 router.get('/read/:recordId', (req, res, next) => {
