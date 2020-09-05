@@ -22,7 +22,7 @@ router.get('/list', (req, res, next) => {
 // /api/create
 // Create a new record
 router.post('/create', (req, res, next) => {
-    if (!req.body.value1 || !req.body.value2 || typeof req.body.value3 !== 'undefined') return res.status(400).send({ message: 'All three values must be provided to complete this request' });
+    if (!req.body.value1 || !req.body.value2 || typeof req.body.value3 === 'undefined') return res.status(400).send({ message: 'All three values must be provided to complete this request' });
     client
         .query(`SELECT * FROM insert_record('${req.body.value1}',${req.body.value2},${req.body.value3});`)
         .then(resp => res.send({ message: `New row created`, data: resp.rows }))
@@ -46,7 +46,7 @@ router.get('/read/:recordId', (req, res, next) => {
 // /api/modify/:recordId
 // Update a record with new parameters
 router.put('/modify/:recordId', (req, res, next) => {
-    if (!req.body.value1 || !req.body.value2 || typeof req.body.value3 !== 'undefined') return res.status(400).send({ message: 'All three values must be provided to complete this request' });
+    if (!req.body.value1 || !req.body.value2 || typeof req.body.value3 === 'undefined') return res.status(400).send({ message: 'All three values must be provided to complete this request' });
     client
         .query(`SELECT * FROM update_record(${req.params.recordId},'${req.body.value1}',${req.body.value2},${req.body.value3});`)
         .then(resp => {
