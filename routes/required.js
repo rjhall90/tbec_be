@@ -3,15 +3,6 @@ const router = express.Router();
 
 const db = require('../db');
 
-// const { Client } = require('pg');
-// const client = new Client({
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
-// client.connect();
-
 // /api/list
 // Get all records
 router.get('/list', (req, res, next) => {
